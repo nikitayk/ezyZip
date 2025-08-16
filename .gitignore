@@ -134,3 +134,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+
+# Ignore node_modules
+node_modules/
+
+# Ignore Mac system files
+__MACOSX/
+.DS_Store
