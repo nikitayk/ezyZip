@@ -28,7 +28,15 @@ function App() {
 
   // Create a simple AI config for the useAI hook
   const aiConfig = { apiKey: apiKey || '' };
-  const { sendMessage: aiSendMessage, isLoading: aiIsLoading } = useAI(aiConfig);
+  const {
+    sendMessage: aiSendMessage,
+    isLoading: aiIsLoading,
+    solveDSAProblem,
+    analyzeComplexity,
+    generateTestCases,
+    uploadFile,
+    analyzeFile
+  } = useAI(aiConfig);
 
   // Check if API key exists on mount
   useEffect(() => {
@@ -110,11 +118,22 @@ function App() {
     switch (currentMode) {
       case 'dsa-solver':
         return <DSASolver 
-          onSolve={async () => ({}) as any}
-          onAnalyzeComplexity={async () => ({}) as any}
-          onGenerateTestCases={async () => []}
-          isLoading={false}
+          onSolve={solveDSAProblem}
+          onAnalyzeComplexity={analyzeComplexity}
+          onGenerateTestCases={generateTestCases}
+          onFileUpload={uploadFile}
+          onFileAnalysis={analyzeFile}
+          isLoading={aiIsLoading}
         />;
+      case 'gamification':
+        return (
+          <div className="flex-1 p-6">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-3xl font-bold text-white mb-6">Gamification</h1>
+              <p className="text-white">Gamification mode is under construction.</p>
+            </div>
+          </div>
+        );
       case 'competitive':
         return (
           <div className="flex-1 p-6">
@@ -216,13 +235,6 @@ function App() {
 
       {/* Main App Layout */}
       <div className="flex h-screen">
-        {/* Sidebar */}
-        <Sidebar 
-          currentMode={currentMode} 
-          onModeChange={handleModeChange}
-          onZeroTraceToggle={toggleZeroTracePopup}
-        />
-        
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col">
           {/* Header */}
@@ -238,6 +250,13 @@ function App() {
             renderMainContent()
           )}
         </div>
+
+        {/* Sidebar */}
+        <Sidebar
+          currentMode={currentMode}
+          onModeChange={handleModeChange}
+          onZeroTraceToggle={toggleZeroTracePopup}
+        />
       </div>
 
       {/* API Key Modal */}
