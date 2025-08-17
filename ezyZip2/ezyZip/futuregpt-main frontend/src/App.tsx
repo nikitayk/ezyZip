@@ -8,6 +8,7 @@ import Header from './components/Header';
 import WelcomeScreen from './components/WelcomeScreen';
 import ApiKeyModal from './components/ApiKeyModal';
 import FileUpload from './components/FileUpload';
+import AlgorithmsProfessor from './components/AlgorithmsProfessor';
 import { useAI } from './hooks/useAI';
 import { useLegacyStorage } from './hooks/useStorage';
 import './index.css';
@@ -24,10 +25,15 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   
   // Use the legacy storage hook for API key management
-  const { apiKey, saveApiKey } = useLegacyStorage();
+  const { apiKey, saveApiKey, model } = useLegacyStorage();
 
   // Create a simple AI config for the useAI hook
-  const aiConfig = { apiKey: apiKey || '' };
+  const aiConfig = {
+    apiKey: apiKey || '',
+    model: model,
+    temperature: 0.7,
+    maxTokens: 1000
+  };
   const {
     sendMessage: aiSendMessage,
     isLoading: aiIsLoading,
@@ -126,14 +132,7 @@ function App() {
           isLoading={aiIsLoading}
         />;
       case 'gamification':
-        return (
-          <div className="flex-1 p-6">
-            <div className="max-w-4xl mx-auto">
-              <h1 className="text-3xl font-bold text-white mb-6">Gamification</h1>
-              <p className="text-white">Gamification mode is under construction.</p>
-            </div>
-          </div>
-        );
+        return <AlgorithmsProfessor />;
       case 'competitive':
         return (
           <div className="flex-1 p-6">
