@@ -65,15 +65,6 @@ const Header: React.FC<HeaderProps> = ({ currentMode, onZeroTraceToggle }) => {
 
         {/* Right Side - Actions */}
         <div className="flex items-center space-x-3">
-          {/* ZeroTrace AI Toggle */}
-          <button
-            onClick={onZeroTraceToggle}
-            className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white rounded-lg font-medium transition-all duration-200 hover:scale-105"
-          >
-            <Shield className="w-4 h-4" />
-            <span className="hidden sm:inline">ZeroTrace</span>
-          </button>
-
           {/* Notifications */}
           <button className="p-2 text-[#AAB4CF] hover:text-white hover:bg-[#2A3142] rounded-lg transition-all duration-200 relative">
             <Bell className="w-5 h-5" />

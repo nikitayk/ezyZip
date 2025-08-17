@@ -170,6 +170,7 @@ export function useAI(config: AIConfig) {
         prompt: lastMessage?.content || '',
         conversationId: conversationId,
         mode: mode,
+        model: config.model,
         ...(context?.webpageContent && { webpageContent: context.webpageContent }),
         ...(context?.selectedText && { selectedText: context.selectedText })
       };

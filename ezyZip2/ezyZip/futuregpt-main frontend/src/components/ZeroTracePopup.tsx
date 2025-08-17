@@ -127,6 +127,7 @@ const defaultFeatures: Feature[] = [
 const aiModels = [
   { id: 'gpt-3.5-turbo', name: 'GPT-3.5 Turbo', description: 'Fast & Efficient' },
   { id: 'gpt-4', name: 'GPT-4', description: 'High Quality' },
+  { id: 'gpt-4o', name: 'GPT-4o', description: 'Most Advanced' },
   { id: 'claude-4', name: 'Claude-4', description: 'Advanced Reasoning' },
   { id: 'gemini-pro', name: 'Gemini Pro', description: 'Creative Solutions' }
 ];
