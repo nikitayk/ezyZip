@@ -8,7 +8,8 @@ import {
   Settings,
   Shield,
   Brain,
-  Crown
+  Crown,
+  Activity
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -21,24 +22,16 @@ const Sidebar: React.FC<SidebarProps> = ({ currentMode, onModeChange, onZeroTrac
   const modes = [
     { id: 'chat', label: 'Chat', icon: MessageSquare, description: 'General AI chat' },
     { id: 'dsa-solver', label: 'DSA Solver', icon: Code, description: 'Algorithm problem solving' },
-    { id: 'competitive', label: 'Competitive', icon: Trophy, description: 'Competitive programming' },
+    { id: 'competitive', label: 'Competitive', icon: Zap, description: 'Competitive programming' },
     { id: 'interview', label: 'Interview', icon: Users, description: 'Interview preparation' },
-    { id: 'optimization', label: 'Optimization', icon: Zap, description: 'Code optimization' },
+    { id: 'optimization', label: 'Optimization', icon: Activity, description: 'Code optimization' },
+    { id: 'gamification', label: 'Gamification', icon: Trophy, description: 'Gamified learning' },
   ];
 
   return (
-    <div className="w-64 bg-[#1D2333] border-r border-[#2A3142] flex flex-col">
+    <div className="w-64 bg-[#1D2333] border-l border-[#2A3142] flex flex-col">
       {/* ZeroTrace AI Header */}
       <div className="p-4 border-b border-[#2A3142]">
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center">
-            <Brain className="w-5 h-5 text-white" />
-          </div>
-          <div>
-            <h1 className="text-lg font-bold text-white">ZeroTrace AI</h1>
-            <p className="text-xs text-[#AAB4CF]">Privacy-first AI</p>
-          </div>
-        </div>
         
         {/* ZeroTrace Toggle Button */}
         <button
